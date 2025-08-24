@@ -325,3 +325,50 @@ REFERENCES [dbo].[Generos] ([Id])
 GO
 ALTER TABLE [dbo].[FilmesGenero] CHECK CONSTRAINT [FK__FilmesGen__IdGen__2E1BDC42]
 GO
+
+
+
+--------------------------------------------- respostas -----------------------------------------
+
+--1- Buscar o nome e ano dos filmes
+select nome, ano from filmes
+
+--2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
+select nome, ano, duracao from filmes order by ano
+
+--3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
+select nome, ano, duracao from filmes where nome = 'De Volta para o Futuro'
+
+--4- Buscar os filmes lançados em 1997
+select nome, ano, duracao from filmes where ano = 1997
+
+--5- Buscar os filmes lançados APÓS o ano 2000
+select nome, ano, duracao from filmes where ano > 2000
+
+--6 Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
+select nome, ano, duracao from filmes where duracao > 100 and duracao < 150
+
+--7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
+select ano, count(*) as quantidade from filmes group by ano order by quantidade desc
+
+--8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
+select * from Atores where genero = 'M'
+
+--9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
+select * from Atores where genero = 'F' order by PrimeiroNome 
+
+--10 - Buscar o nome do filme e o gênero
+select f.nome, g. genero from filmes f 
+	inner join FilmesGenero fg on f.id = fg.idFilme 
+	Inner join Generos g on g.id = fg.idGenero
+
+-- 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
+select f.nome, g. genero from filmes f 
+	inner join FilmesGenero fg on f.id = fg.idFilme 
+	Inner join Generos g on g.id = fg.idGenero
+where g.id = 10
+
+--12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
+select f.Nome, a.PrimeiroNome, a.UltimoNome, ef.Papel from filmes f 
+	inner join ElencoFilme ef on f.id = ef.idFilme 
+	Inner join Atores a on a.id = ef.idFilme
