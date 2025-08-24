@@ -43,10 +43,14 @@ Você deverá executar o arquivo **Script Filmes.sql** em seu banco de dados SQL
 Você deverá criar diversas consultas, com o objetivo de retornar os dados a seguir. Abaixo de cada pedido tem o retorno esperado. O seu retorno deve ser igual ao da imagem.
 
 ## 1 - Buscar o nome e ano dos filmes
+```sql
+select nome, ano from filmes
 
 ![Exercicio 1](Imagens/1.png)
-
+```sql
 ## 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
+
+select nome, ano, duracao from filmes order by ano
 
 ![Exercicio 2](Imagens/2.png)
 
@@ -68,7 +72,7 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 
 ## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
 
-### select distinct f.ano , (select count(id) from filmes where ano = f.ano ) as quantidade from filmes as f order by ano desc
+select distinct f.ano , (select count(id) from filmes where ano = f.ano ) as quantidade from filmes as f order by ano desc
 
 ![Exercicio 7](Imagens/7.png)
 
