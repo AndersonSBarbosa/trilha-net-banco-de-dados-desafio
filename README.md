@@ -68,6 +68,9 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 
 ## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
 
+Resposta 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
+select distinct f.ano  , (select count(id) from filmes where ano = f.ano ) as quantidade from filmes as f order by ano desc
+
 ![Exercicio 7](Imagens/7.png)
 
 ## 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
